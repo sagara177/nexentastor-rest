@@ -1,0 +1,44 @@
+== nexentastor-rest ==
+
+'nexentastor-rest' is a Java bindings for NexentaStor(c) REST API (http://www.nexenta.com/corp/static/docs-stable/NexentaStor-RESTful-API.pdf).
+'nexentastor-rest' is NOT nexenta official files.
+Project home page can be found
+from:
+
+https://github.com/sagara177/nexentastor-rest
+
+=== Functionality ===
+
+nexentastor-rest implements functionality for:
+
+* Reading (parsing) and writing (generation) of NexentaStor(c) REST Json content
+
+=== Requirements ===
+
+nexentastor-rest can be used on standard J2SE 1.6 platform.
+
+nexentastor-rest has dependencies as shown below:
+
+Jackson JSON Processor
+* jackson-core-lgpl-1.8.5.jar
+* jackson-mapper-lgpl-1.8.5.jar
+downloads from:
+http://wiki.fasterxml.com/JacksonDownload
+
+Jersey JAX-RS (JSR 311) Reference Implementation
+* jersey-client-1.7.jar
+* jersey-core-1.7.jar
+* jersey-json-1.7.jar
+downloads from:
+http://jersey.java.net/nonav/documentation/latest/chapter_deps.html
+
+Apache log4j
+* log4j-1.2.15.jar
+downloads from:
+http://logging.apache.org/log4j/1.2/download.html
+
+=== Licensing ===
+
+nexentastor-rest currently below Open Source licenses are available for use:
+
+* Lesser/Library General Public License (LGPL 2.1)

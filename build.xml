@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="all" name="Create Jar for Project nexentastor-rest with libraries in sub-folder">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <property name="version" value="0.1.0" />
+    <target name="jar">
+        <jar destfile="nexentastor-rest-${version}.jar">
+            <fileset dir="bin">
+                <include name="rest" />
+                <include name="rest/**" />
+            </fileset>
+        </jar>
+    </target>
+    <target name="jar-sample">
+        <jar destfile="nexentastor-rest-sample-${version}.jar">
+            <fileset dir="bin">
+                <include name="sample" />
+                <include name="sample/**" />
+            </fileset>
+        </jar>
+    </target>
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="lib/log4j-1.2.15.jar:lib/jersey-core-1.7.jar:lib/jackson-core-lgpl-1.8.5.jar:lib/jackson-mapper-lgpl-1.8.5.jar:lib/jersey-json-1.7.jar:lib/jersey-client-1.7.jar" destdir="doc" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="rest.client,rest.nexentastor.api,rest.nexentastor,rest.client.exception" source="1.6" sourcepath="src" splitindex="true" use="true" version="true" locale="en" windowtitle="NexentaStor REST Client ${version}" />
+    </target>
+    <target name="dist" depends="jar,jar-sample,javadoc">
+        <copy file="nexentastor-rest-${version}.jar" todir="dist/nexentastor-rest-${version}" />
+        <copy file="nexentastor-rest-sample-${version}.jar" todir="dist/nexentastor-rest-${version}" />
+        <copy todir="dist/nexentastor-rest-${version}/conf">
+            <fileset file="conf/log4j.xml" />
+        </copy>
+        <copy todir="dist/nexentastor-rest-${version}/doc">
+            <fileset dir="doc" />
+        </copy>
+        <copy todir="dist/nexentastor-rest-${version}/lib">
+            <fileset dir="lib" />
+        </copy>
+        <copy todir="dist/nexentastor-rest-${version}/">
+            <fileset file="LICENSE" />
+            <fileset file="README" />
+        </copy>
+        <tar destfile="dist/nexentastor-rest-${version}.tar.gz" basedir="dist/">
+            <exclude name="nexentastor-rest-*.tar.gz"/>
+        </tar>
+    </target>
+    <target name="distclean">
+        <delete dir="dist" />
+    </target>
+    <target name="clean" depends="distclean">
+        <delete file="nexentastor-rest-${version}.jar" />
+        <delete file="nexentastor-rest-sample-${version}.jar" />
+        <delete dir="doc" />
+    </target>
+    <target name="all" depends="jar,jar-sample,javadoc,dist" />
+</project>
